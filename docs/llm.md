@@ -1,8 +1,8 @@
-# LLM Developer Guide for vibesdk
+# LLM Developer Guide for XXL Vibe
 
 > **📋 Meta-Instruction for AI Assistants:**
 > 
-> This document contains comprehensive architectural knowledge for **vibesdk** - an AI-powered full-stack app generation platform built on Cloudflare Workers with React.
+> This document contains comprehensive architectural knowledge for **XXL Vibe** - an AI-powered full-stack app generation platform built on Cloudflare Workers with React.
 >
 > **Your Responsibilities:**
 > 1. **Read this entire document** before making ANY changes
@@ -133,7 +133,7 @@ export const AGENT_CONFIG = {
 
 **File:** `/worker/agents/operations/UserConversationProcessor.ts`
 - Line ~50: System prompt starts
-- Defines Orange AI personality, tool usage rules, behavior
+- Defines Miles system prompt identity, tool usage rules, behavior
 
 **Task: Add new WebSocket message**
 
@@ -225,7 +225,7 @@ const delay = Math.min(Math.pow(2, attempt) * 1000, 30000);
 ### **Complete Directory Structure**
 
 ```
-📦 vibesdk/
+📦 XXL Vibe/
 │
 ├── 📁 src/                                    # Frontend React application
 │   ├── api-types.ts                          # ALL shared types (single source of truth)
@@ -317,7 +317,7 @@ const delay = Math.min(Math.pow(2, attempt) * 1000, 30000);
 │   │   ├── 📁 operations/                    # State machine operations
 │   │   │   ├── PhaseGeneration.ts            # Phase planning
 │   │   │   ├── PhaseImplementation.ts        # File generation (37k lines)
-│   │   │   ├── UserConversationProcessor.ts  # Orange AI (42k lines)
+│   │   │   ├── UserConversationProcessor.ts  # Miles conversation prompt
 │   │   │   ├── PostPhaseCodeFixer.ts         # Code review/fixes
 │   │   │   ├── FileRegeneration.ts           # Single file fixes
 │   │   │   └── ScreenshotAnalysis.ts         # Image analysis
@@ -810,7 +810,7 @@ Vibesdk uses **isomorphic-git** to manage version control entirely in the browse
 2. Calls `GitService.commitFiles(files, message)`
 3. Git service stages all files
 4. Creates commit with metadata:
-   - Author: "vibesdk AI Agent"
+   - Author: "XXL Vibe AI Agent"
    - Committer: same
    - Message: "Phase X: Feature Y" or "Fix: Bug Z"
    - Timestamp: current time
@@ -875,7 +875,7 @@ Vibesdk uses **isomorphic-git** to manage version control entirely in the browse
 
 **Usage:**
 ```bash
-git clone https://vibesdk.com/git/{agentId}
+git clone https://doublexl.cloud/git/{agentId}
 ```
 
 User gets complete repository with:
@@ -1771,10 +1771,10 @@ Frontend:
 
 ---
 
-## 🤖 Conversational AI System ("Orange")
+## Conversational AI System ("Miles")
 
 ### **Purpose**
-Orange is the AI interface between users and the development agent. It handles:
+Miles is the AI interface between users and implementation workflows. It handles:
 - User questions and discussions
 - Feature/bug requests (via `queue_request` tool)
 - Immediate debugging (via `deep_debug` tool)
@@ -1782,7 +1782,7 @@ Orange is the AI interface between users and the development agent. It handles:
 
 ### **System Prompt Philosophy**
 
-**CRITICAL:** Orange speaks AS IF it's the developer:
+**CRITICAL:** Miles speaks AS IF it's the developer:
 - ✅ "I'll add that feature"
 - ✅ "I'm fixing that bug"
 - ❌ NEVER: "The team will...", "The agent will..."
@@ -2343,7 +2343,7 @@ export function createMyNewTool(agent: CodingAgentInterface, logger: StructuredL
 3. Register in `/worker/agents/tools/customTools.ts`:
    - Import: `import { createMyNewTool } from './toolkit/my-new-tool';`
    - Add to `buildTools()` array (line 44): `createMyNewTool(agent, logger),`
-4. Tool is now available to conversation agent (Orange AI)
+4. Tool is now available to conversation agent (Miles)
 
 ## **Modifying Deep Debugger Behavior**
 
@@ -3589,7 +3589,7 @@ try {
 
 ## Overview
 
-**SimpleCodeGeneratorAgent** is the brain of vibesdk - a Durable Object that orchestrates entire app generation lifecycle.
+**SimpleCodeGeneratorAgent** is the brain of XXL Vibe - a Durable Object that orchestrates entire app generation lifecycle.
 
 **Key responsibilities:**
 - Blueprint generation from user prompts
@@ -4831,7 +4831,7 @@ Each extends BaseService, uses Drizzle ORM, follows standard CRUD patterns.
 - `/worker/agents/inferutils/infer.ts` - Inference execution wrapper
 - `/worker/agents/inferutils/config.ts` - Model configurations
 - `/worker/agents/assistants/codeDebugger.ts` - Deep debugger assistant
-- `/worker/agents/operations/UserConversationProcessor.ts` - Orange AI (818 lines)
+- `/worker/agents/operations/UserConversationProcessor.ts` - Miles conversation prompt
 - `/worker/agents/tools/customTools.ts` - Tool registration
 - `/worker/api/routes/index.ts` - Main API router
 - `/worker/database/schema.ts` - Database schema (618 lines)
