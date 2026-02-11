@@ -1,6 +1,5 @@
 import React from 'react';
 import clsx from 'clsx';
-import { Link } from 'react-router';
 
 export function Header({
 	className,
