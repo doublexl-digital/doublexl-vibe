@@ -169,10 +169,10 @@
             },
             "version": "1.0.0"
         },
-        "CUSTOM_DOMAIN": "www.double-xl.ai",
+        "CUSTOM_DOMAIN": "vibe.double-xl.ai",
         "MAX_SANDBOX_INSTANCES": "10",
         "SANDBOX_INSTANCE_TYPE": "standard-3"
     },
-	"workers_dev": false,
+	"workers_dev": true,
 	"preview_urls": false
 }
